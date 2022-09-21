@@ -1,4 +1,13 @@
+@import url("./assets/css/iconfont.css");
+
+@font-face {
+  font-family: alimama;
+  src: url("./assets/fonts/Alimama_ShuHeiTi_Bold.ttf")
+}
+
 body {
   padding: 0;
   margin: 0;
+  background-color: aliceblue;
+  font-family: alimama;
 }

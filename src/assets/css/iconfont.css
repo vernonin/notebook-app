@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3663676 */
+  src: url('iconfont.ttf?t=1663765488868') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sousuo:before {
+  content: "\e752";
+}
+
+.icon-bianjishuru:before {
+  content: "\e8cc";
+}
+

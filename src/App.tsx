@@ -1,8 +1,11 @@
 import React from 'react'
 
+import Header from './components/Header'
 const App: React.FC = () => {
   return (
-    <h2 style={{ textAlign: 'center' }}>NOTEBOOK APP</h2>
+    <>
+      <Header />
+    </>
   )
 }
 
