@@ -10,4 +10,27 @@ body {
   margin: 0;
   background-color: aliceblue;
   font-family: alimama;
+  font-weight: 100;
+}
+.body-main {
+  height: calc(100vh - 42px);
+  box-sizing: border-box;
+  overflow-y: scroll;
+  padding-bottom: 12px;
+}
+
+.add-icon {
+  position: absolute;
+  right: 12vw;
+  bottom: 10vh;
+  width: 38px;
+  height: 38px;
+  text-align: center;
+  line-height: 32px;
+  border-radius: 50%;
+  background-color: rgba(117, 12, 12, 0.8);
+}
+.add-icon i {
+  color: ghostwhite;
+  font-size: 26px;
 }
