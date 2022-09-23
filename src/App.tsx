@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Modal, { AddEdit } from './components/Modal'
 import Header from './components/Header'
 import NoteItem from './components/NoteItem'
 
@@ -25,6 +26,9 @@ const App: React.FC = () => {
         <NoteItem />
         <NoteItem />
       </div>
+      <Modal>
+        <AddEdit />
+      </Modal>
       <AddIcon />
     </>
   )

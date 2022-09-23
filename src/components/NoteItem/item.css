@@ -10,7 +10,7 @@
 }
 
 .item-content {
-	height: 60px;
+	height: 62px;
 }
 .item-content .title {
 	height: 16px;
@@ -19,11 +19,11 @@
 	line-height: 16px;
 }
 .item-content .content {
-	margin-top: 5px;
+	margin-top: 6px;
 	font-family: '微软雅黑';
-	height: 34px;
+	height: 36px;
 	font-size: 14px;
-	line-height: 17px;
+	line-height: 18px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
@@ -34,8 +34,8 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-
-	height: 28px;
+	height: 26px;
+	font-size: 14px;
 	border-top: 1px solid #ccc;
 }
 

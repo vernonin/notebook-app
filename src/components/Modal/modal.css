@@ -1,0 +1,74 @@
+.modal-container {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9999;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.add-edit {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 60vh;
+	padding: 20px;
+	box-sizing: border-box;
+	background-color: #fff;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+.add-edit .icon-guanbi {
+	position: absolute;
+	top: 10px;
+	right: 14px;
+	font-size: 30px;
+	color: #666;
+}
+.title-input {
+	width: 100%;
+	height: 34px;
+	font-size: 18px;
+	padding-left: 4px;
+	box-sizing: border-box;
+	border: 1px solid paleturquoise;
+}
+.textarea {
+	display: block;
+	width: 100%;
+	height: 30vh;
+	margin-top: 6px;
+	padding: 4px;
+	font-size: 16px;
+	box-sizing: border-box;
+	border: 1px solid lightgreen;
+}
+
+.operation {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 10px;
+	height: 40px;
+	padding: 0 20px;
+	text-align: right;
+}
+.operation button {
+	border: none;
+	color: #333;
+	margin-left: 10px;
+	font-size: 18px;
+	padding: 5px 15px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+}
+.confim {
+	color: #fff;
+	border: 1px solid #3B82F6;
+	background-color: #3B82F6;
+}
