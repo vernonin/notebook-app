@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { nanoid } from 'nanoid'
 import useFormatTime from '../../hooks/useFormatTime'
 import { INote } from './types'
 import './modal.css'
@@ -12,27 +11,32 @@ const getTime = (): number => {
 }
 
 const AddEdit: React.FC<{
+  id?: string
+  title?: string
+  content?: string
   titleMsg: string
   onClose: () => void
   confirm: (note: INote) => void
-}> = ({ titleMsg, onClose, confirm }) => {
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
+}> = ({ id, title, content, titleMsg, onClose, confirm }) => {
+  const [inpTitle, setInpTitle] = useState(() => (title != null) ? title : '')
+  const [inpContent, setContent] = useState(() => (content != null) ? content : '')
 
   const [time, setTime] = useFormatTime(getTime())
 
   const onConfirm = (): void => {
-    if (title.trim() === '') {
+    if (inpTitle.trim() === '') {
       return
     }
-    if (content.trim() === '') {
+    if (inpContent.trim() === '') {
       return
     }
 
     // 更新 time
     setTime(getTime())
 
-    confirm({ id: nanoid(), time, title, content })
+    const cId = (id != null) ? id : ''
+
+    confirm({ id: cId, time, title: inpTitle, content: inpContent })
     onClose()
   }
 
@@ -45,11 +49,13 @@ const AddEdit: React.FC<{
           type="text"
           className="title-input"
           placeholder="请输入标题"
-          onChange={ (e: changeInput) => setTitle(e.target.value) }
+          value={inpTitle}
+          onChange={ (e: changeInput) => setInpTitle(e.target.value) }
         />
         <textarea
           className="textarea"
           placeholder="请输入内容..."
+          value={inpContent}
           onChange={ (e: changeTextarea) => setContent(e.target.value) }
         />
       </div>
