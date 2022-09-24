@@ -4,12 +4,21 @@ import AddEditFC from './AddEdit'
 import './modal.css'
 
 const Modal: React.FC<{
+  visible: boolean
   children: ReactNode
-}> = ({ children }) => {
+}> = ({ visible, children }) => {
   return (
-    <div className="modal-container">
-      {children}
-    </div>
+    <>
+      {
+        visible
+          ? (
+              <div className="modal-container">
+                { children }
+              </div>
+            )
+          : ''
+      }
+    </>
   )
 }
 
