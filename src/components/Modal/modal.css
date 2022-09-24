@@ -76,11 +76,9 @@
 
 @keyframes slide-top {
   0% {
-    -webkit-transform: translateY(300px);
 		transform: translateY(300px);
   }
   100% {
-    -webkit-transform: translateY(0px);
 		transform: translateY(0px);
   }
 }

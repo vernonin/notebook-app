@@ -63,6 +63,10 @@ const App: React.FC = () => {
     setIsAdd(false)
     setAdVisible(true)
   }
+  // 删除编辑
+  const handleDelete = (id: string): void => {
+    setNotes((notes) => notes.filter(n => n.id !== id))
+  }
 
   return (
     <>
@@ -70,7 +74,7 @@ const App: React.FC = () => {
       <div className="body-main">
         {
           notes.map(note => (
-            <NoteItem {...note} key={note.id} onEdit={handleEdit} />)
+            <NoteItem {...note} key={note.id} onEdit={handleEdit} onDelete={handleDelete} />)
           )
         }
       </div>
