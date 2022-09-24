@@ -3,10 +3,12 @@ import React from 'react'
 import { INote } from '../Modal/types'
 import './item.css'
 
-type NoteItemProps = Omit<INote, 'id'>
+interface IItemProps extends INote {
+  onEdit: (id: string) => void
+}
 
-const NoteItem: React.FC<NoteItemProps> = ({
-  time, title, content
+const NoteItem: React.FC<IItemProps> = ({
+  id, time, title, content, onEdit
 }) => {
   return (
     <div className="note-item">
@@ -20,7 +22,7 @@ const NoteItem: React.FC<NoteItemProps> = ({
         <div className="time">{ time }</div>
         <div>
           <span className="edit">
-            <i className="iconfont icon-bianji"></i>
+            <i className="iconfont icon-bianji" onClick={() => onEdit(id)}></i>
             编辑
           </span>
           <span className="delete">
