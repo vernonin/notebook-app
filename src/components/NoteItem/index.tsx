@@ -1,18 +1,23 @@
 import React from 'react'
 
+import { INote } from '../Modal/types'
 import './item.css'
 
-const NoteItem: React.FC = () => {
+type NoteItemProps = Omit<INote, 'id'>
+
+const NoteItem: React.FC<NoteItemProps> = ({
+  time, title, content
+}) => {
   return (
     <div className="note-item">
       <div className="item-content">
-        <div className="title">标题</div>
+        <div className="title">{ title }</div>
         <div className="content">
-        无论世界是否待你温柔，请保持住你的善良，好运会与你不期而遇。活成自己喜欢的样子，有些人出现在你的生命里，只是为了教你成长。
+        { content }
         </div>
       </div>
       <div className="item-footer">
-        <div className="time">9-22 20:33</div>
+        <div className="time">{ time }</div>
         <div>
           <span className="edit">
             <i className="iconfont icon-bianji"></i>
