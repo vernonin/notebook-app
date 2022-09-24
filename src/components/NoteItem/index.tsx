@@ -5,10 +5,11 @@ import './item.css'
 
 interface IItemProps extends INote {
   onEdit: (id: string) => void
+  onDelete: (id: string) => void
 }
 
 const NoteItem: React.FC<IItemProps> = ({
-  id, time, title, content, onEdit
+  id, time, title, content, onEdit, onDelete
 }) => {
   return (
     <div className="note-item">
@@ -26,7 +27,7 @@ const NoteItem: React.FC<IItemProps> = ({
             编辑
           </span>
           <span className="delete">
-            <i className="iconfont icon-icon"></i>
+            <i className="iconfont icon-icon" onClick={() => onDelete(id)}></i>
             删除
           </span>
         </div>
