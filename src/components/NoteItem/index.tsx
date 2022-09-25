@@ -4,16 +4,17 @@ import { INote } from '../Modal/types'
 import './item.css'
 
 interface IItemProps extends INote {
+  onShow: (id: string) => void
   onEdit: (id: string) => void
   onDelete: (id: string) => void
 }
 
 const NoteItem: React.FC<IItemProps> = ({
-  id, time, title, content, onEdit, onDelete
+  id, time, title, content, onShow, onEdit, onDelete
 }) => {
   return (
     <div className="note-item">
-      <div className="item-content">
+      <div className="item-content" onClick={() => onShow(id)}>
         <div className="title">{ title }</div>
         <div className="content">
         { content }
