@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 
 import Header from './components/Header'
 import NoteItem from './components/NoteItem'
-import Modal, { AddEdit } from './components/Modal'
+import Modal, { AddEdit, Show } from './components/Modal'
 
 import { INote } from './components/Modal/types'
 
@@ -18,10 +18,12 @@ const AddIcon: React.FC<{
 }
 
 const App: React.FC = () => {
+  const [isAdd, setIsAdd] = useState(true)
   const [adVisible, setAdVisible] = useState(false)
+  const [showVisible, setShowVisible] = useState(false)
+
   const [notes, setNotes] = useState<INote[]>([])
   const [currNote, setCurrNote] = useState<INote | {}>({})
-  const [isAdd, setIsAdd] = useState(true)
 
   // 打开弹框
   const openAdVisible = useCallback(() => {
@@ -30,9 +32,10 @@ const App: React.FC = () => {
     setAdVisible(true)
   }, [])
 
-  // 关闭弹框
-  const closeAdVisible = (): void => {
-    setAdVisible(false)
+  // 搜索
+  const handleSearch = (keywords: string): void => {
+    console.log(keywords)
+    setNotes((notes) => notes.filter(n => n.title.includes(keywords)))
   }
 
   // 添加笔记
@@ -55,6 +58,12 @@ const App: React.FC = () => {
       setNotes((notes) => [note, ...notes])
     }
   }
+  // 查看
+  const handleShow = (id: string): void => {
+    const cuur = notes.find(n => n.id === id)
+    setCurrNote(cuur as INote)
+    setShowVisible(true)
+  }
   // 编辑笔记
   const handleEdit = (id: string): void => {
     const cuur = notes.find(n => n.id === id)
@@ -70,11 +79,17 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <Header onSearch={handleSearch}/>
       <div className="body-main">
         {
           notes.map(note => (
-            <NoteItem {...note} key={note.id} onEdit={handleEdit} onDelete={handleDelete} />)
+            <NoteItem
+              {...note}
+              key={note.id}
+              onShow={handleShow}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />)
           )
         }
       </div>
@@ -83,10 +98,15 @@ const App: React.FC = () => {
         <AddEdit
           titleMsg={isAdd ? '添加事迹' : '编辑笔记'}
           {...currNote}
-          onClose={closeAdVisible}
+          onClose={() => setAdVisible(false)}
           confirm={addNotes}
         />
       </Modal>
+
+      <Modal visible={showVisible}>
+        <Show {...currNote} onClose={() => setShowVisible(false)}/>
+      </Modal>
+
       <AddIcon onAddIcon={openAdVisible} />
     </>
   )
