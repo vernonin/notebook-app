@@ -40,9 +40,13 @@ const Header: React.FC<{
           className="title">
           我的记事本
         </span>
-        {isSearch ? <input className="search-input" type="text" ref={inputRef} onKeyUp={onKeyUp} placeholder='请输入搜索内容~' /> : ''}
+        {
+          isSearch ? <input className="search-input"type="text" ref={inputRef} onKeyUp={onKeyUp} placeholder='搜索功能不完整，请慎用~' /> : ''
+          }
         <div className="search-icon" onClick={search}>
-          {isSearch ? <span className="cancel">取消</span> : <i className="iconfont icon-sousuo"></i>}
+          {
+            isSearch ? <span className="cancel">取消</span> : <i className="iconfont icon-sousuo"></i>
+          }
         </div>
       </div>
     </>

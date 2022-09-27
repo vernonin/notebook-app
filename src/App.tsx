@@ -1,11 +1,16 @@
 import React, { useState, useCallback } from 'react'
 import { nanoid } from 'nanoid'
+import useStorage, { NOTES_DATA } from './hooks/useStorage'
 
 import Header from './components/Header'
 import NoteItem from './components/NoteItem'
 import Modal, { AddEdit, Show } from './components/Modal'
 
 import { INote } from './components/Modal/types'
+
+const getStorageData = (): INote[] | [] => {
+  return JSON.parse(localStorage.getItem(NOTES_DATA) as string)
+}
 
 const AddIcon: React.FC<{
   onAddIcon: () => void
@@ -22,7 +27,7 @@ const App: React.FC = () => {
   const [adVisible, setAdVisible] = useState(false)
   const [showVisible, setShowVisible] = useState(false)
 
-  const [notes, setNotes] = useState<INote[]>([])
+  const [notes, setNotes] = useStorage<INote[]>(getStorageData())
   const [currNote, setCurrNote] = useState<INote | {}>({})
 
   // 打开弹框
@@ -33,13 +38,13 @@ const App: React.FC = () => {
   }, [])
 
   // 搜索
-  const handleSearch = (keywords: string): void => {
-    console.log(keywords)
-    setNotes((notes) => notes.filter(n => n.title.includes(keywords)))
-  }
+  const handleSearch = useCallback((keywords: string): void => {
+    const data = notes.filter(n => n.title.includes(keywords))
+    setNotes(data)
+  }, [])
 
   // 添加笔记
-  const addNotes = (note: INote): void => {
+  const addNotes = useCallback((note: INote): void => {
     if (note.id !== '') {
       const editNotes = notes.map(n => {
         if (n.id === note.id) {
@@ -55,27 +60,31 @@ const App: React.FC = () => {
     } else {
       note.id = nanoid()
 
-      setNotes((notes) => [note, ...notes])
+      setNotes([note, ...notes])
     }
-  }
+  }, [notes])
+
   // 查看
-  const handleShow = (id: string): void => {
+  const handleShow = useCallback((id: string): void => {
     const cuur = notes.find(n => n.id === id)
     setCurrNote(cuur as INote)
     setShowVisible(true)
-  }
+  }, [])
+
   // 编辑笔记
-  const handleEdit = (id: string): void => {
+  const handleEdit = useCallback((id: string): void => {
     const cuur = notes.find(n => n.id === id)
     setCurrNote(cuur as INote)
 
     setIsAdd(false)
     setAdVisible(true)
-  }
+  }, [notes])
+
   // 删除编辑
-  const handleDelete = (id: string): void => {
-    setNotes((notes) => notes.filter(n => n.id !== id))
-  }
+  const handleDelete = useCallback((id: string): void => {
+    const data = notes.filter(n => n.id !== id)
+    setNotes(data)
+  }, [notes])
 
   return (
     <>
