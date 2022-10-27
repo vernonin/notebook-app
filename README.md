@@ -4,6 +4,7 @@
 
 ![首页]("./public/home.jpg")
 ![首页]("./public/add.jpg")
+![首页]("./public/show.jpg")
 ![首页]("./public/end-product.jpg")
 
 ## 克隆项目
