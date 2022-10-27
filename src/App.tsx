@@ -17,7 +17,7 @@ const AddIcon: React.FC<{
 }> = ({ onAddIcon }) => {
   return (
     <div className="add-icon" onClick={onAddIcon}>
-      <i className="iconfont icon-bianjishuru"></i>
+      <i className="iconfont icon-jia"></i>
     </div>
   )
 }

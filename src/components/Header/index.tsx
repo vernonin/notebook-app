@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, memo } from 'react'
 
 import './header.css'
 
@@ -53,4 +53,4 @@ const Header: React.FC<{
   )
 }
 
-export default Header
+export default memo(Header)

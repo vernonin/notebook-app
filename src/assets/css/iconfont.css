@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3663676 */
-  src: url('iconfont.woff?t=1663937482420') format('woff');
+  src: url('iconfont.woff?t=1666872812479') format('woff');
 }
 
 .iconfont {
@@ -9,6 +9,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-jia:before {
+  content: "\e600";
 }
 
 .icon-guanbi:before {
@@ -30,3 +34,4 @@
 .icon-bianjishuru:before {
   content: "\e8cc";
 }
+
